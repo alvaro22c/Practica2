@@ -1,12 +1,16 @@
 import random
-words = ["python","programa","variable","funcion","bucle","cadena","entero","lista",]
-word = random.choice(words)
+ # 3-la lista para a ser un diccionario
+words = {"lenguaje y entorno":["python","programa"],"tipos de datos":["lista","cadena","entero","variable"],
+         "estructuras de organizacion":["funcion","bucle"]}
+
 guessed = []
 attempts = 6
 puntaje = 0
 
 print("¡Bienvenido al Ahorcado!")
 print()
+
+word = random.choice(words[input("Elija una de las categorias :\n  -lenguaje y entorno. \n  -tipos de datos. \n  -estructuras de organizacion. \n ")])  # 3
 
 while attempts > 0:
   # Mostrar progreso: letras adivinadas y guiones para las que faltan
@@ -33,6 +37,8 @@ while attempts > 0:
   if "a"<= letter <= "z" and len(letter) == 1:    # 1- verifica que se ingrese un caracter valido  
      if letter in guessed:
        print("Ya usaste esa letra.")
+       attempts -= 1                              #2
+       puntaje -= 1 
      elif letter in word:
        guessed.append(letter)
        print("¡Bien! Esa letra está en la palabra.")
